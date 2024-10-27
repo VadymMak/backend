@@ -1,16 +1,22 @@
-// server.js
 const express = require("express");
 const app = express();
-const PORT = process.env.PORT || 3000;
+const port = 3000;
 
+// Middleware
 app.use(express.json());
 
-app.post("/callback", (req, res) => {
-  const { name, phone } = req.body;
-  // Implement callback logic here (e.g., send email or store info)
-  res.send("Callback request received");
+// Sample endpoint
+app.get("/", (req, res) => {
+  res.send("Hello, World!");
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Replace with your callback endpoint
+app.post("/callback", (req, res) => {
+  // Handle the callback request
+  res.send("Callback received!");
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
